@@ -46,14 +46,13 @@
 <script src="//captcha.luosimao.com/static/dist/api.js"></script>
 <script>
   function register(){
-    alert("功能开发中, 敬请期待。")
     $.ajax({
             //请求方式
             type : "POST",
             //请求的媒体类型
             contentType: "application/json;charset=UTF-8",
             //请求地址
-            url : "http://127.0.0.1/api/v1/user",
+            url : "http://api.ourhome-china.cn:8000/v1/user",
             //数据，json字符串
             data : JSON.stringify({
               'name': $("#name").val(),
@@ -67,11 +66,41 @@
             }),
             //请求成功
             success : function(result) {
-                console.log(result);
+                alert("欢迎：" + result.name + ", 你的 ID 为：" + result.id + "。")
             },
             //请求失败，包含具体的错误信息
             error : function(e){
-                console.log(e.status);
+                LUOCAPTCHA.reset()
+                if(e.status == 400){
+                  if (e.responseJSON.name){
+                    alert("姓名不正确：" + e.responseJSON.name);
+                  }
+                  if (e.responseJSON.phone){
+                    alert("电话不正确：" + e.responseJSON.phone)
+                  }
+                  if (e.responseJSON.email){
+                    alert("邮箱不正确：" + e.responseJSON.email)
+                  }
+                  if (e.responseJSON.age){
+                    alert("年龄不正确：" + e.responseJSON.age)
+                  }
+                  if (e.responseJSON.gender){
+                    alert("性别不正确：" + e.responseJSON.gender)
+                  }
+                  if (e.responseJSON.happy){
+                    alert("兴趣爱好不正确：" + e.responseJSON.happy)
+                  }
+                  if (e.responseJSON.id_card){
+                    alert("身份证号码后四位不正确：" + e.responseJSON.id_card)
+                  }
+                  if (e.responseJSON.luosimao){
+                    alert("人机验证失败")
+                  }
+
+                  if (e.responseJSON.non_field_errors){
+                    alert("信息错误: " + e.responseJSON.non_field_errors[0])
+                  }
+                }
                 console.log(e.responseText);
             }
         });
@@ -132,8 +161,6 @@
         <div class="site-header-content">
             
             <img class="author-profile-image" src="https://r.photo.store.qq.com/psc?/V12EvAd609VbnF/ruAMsa53pVQWN7FLK88i5sLBZfSPf69byBQ2ZAQyENsJYdjLsfcAtGZpPhZu1YkLckpCYe6uhGsfgol69pdnJ0*ItGa.qhBXZFtgdAPFNwo!/mnull&bo=NwQ4BDcEOAQBCS4!&rf=photolist&t=5/r/_yake_qzoneimgout.png" alt="OHC">
-            
-            <h1 class="site-title">让我们此刻相逢 OurHome </h1>
         </div>
     </div>
 </header>
