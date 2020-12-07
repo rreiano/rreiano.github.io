@@ -53,6 +53,7 @@
             contentType: "application/json;charset=UTF-8",
             //请求地址
             url : "http://api.ourhome-china.cn:8000/v1/user",
+            //url : "http://127.0.0.1:8000/v1/user",
             //数据，json字符串
             data : JSON.stringify({
               'name': $("#name").val(),
@@ -71,34 +72,44 @@
             //请求失败，包含具体的错误信息
             error : function(e){
                 LUOCAPTCHA.reset()
+                error = 0
                 if(e.status == 400){
-                  if (e.responseJSON.name){
+                  if (e.responseJSON.name && error!=1){
                     alert("姓名不正确：" + e.responseJSON.name);
+                    error = 1
                   }
-                  if (e.responseJSON.phone){
+                  if (e.responseJSON.phone && error!=1){
                     alert("电话不正确：" + e.responseJSON.phone)
+                    error = 1
                   }
-                  if (e.responseJSON.email){
+                  if (e.responseJSON.email && error!=1){
                     alert("邮箱不正确：" + e.responseJSON.email)
+                    error = 1
                   }
-                  if (e.responseJSON.age){
+                  if (e.responseJSON.age && error!=1){
                     alert("年龄不正确：" + e.responseJSON.age)
+                    error = 1
                   }
-                  if (e.responseJSON.gender){
+                  if (e.responseJSON.gender && error!=1){
                     alert("性别不正确：" + e.responseJSON.gender)
+                    error = 1
                   }
-                  if (e.responseJSON.happy){
+                  if (e.responseJSON.happy && error!=1){
                     alert("兴趣爱好不正确：" + e.responseJSON.happy)
+                    error = 1
                   }
-                  if (e.responseJSON.id_card){
+                  if (e.responseJSON.id_card && error!=1){
                     alert("身份证号码后四位不正确：" + e.responseJSON.id_card)
+                    error = 1
                   }
-                  if (e.responseJSON.luosimao){
+                  if (e.responseJSON.luosimao && error!=1){
                     alert("人机验证失败")
+                    error = 1
                   }
 
-                  if (e.responseJSON.non_field_errors){
+                  if (e.responseJSON.non_field_errors  && error!=1){
                     alert("信息错误: " + e.responseJSON.non_field_errors[0])
+                    error = 1
                   }
                 }
                 console.log(e.responseText);
@@ -132,6 +143,13 @@
                 <a href="/register" title="ARCHIVES">注册</a>
             </li>
             
+            <!-- <li>
+                <a href="/search" title="查询">查询</a>
+            </li> -->
+            
+            <li>
+                <a href="/ac-top" title="榜单">榜单</a>
+            </li>
             <li>
                 <a href="/about" title="ABOUT">关于</a>
             </li>
