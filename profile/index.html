@@ -11,7 +11,7 @@
 	<link rel="preconnect" href="//9qpuwspm.api.lncld.net">
 	<link rel="preconnect" href="//gravatar.loli.net">
 
-	<title>Tag: 资讯 | OurHome</title>
+	<title>信息查询 | OurHome</title>
 
 	<meta name="HandheldFriendly" content="True">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -39,17 +39,59 @@
 
 	<meta property="og:site_name" content="OurHome">
 	<meta property="og:type" content="blog">
-	<meta property="og:title" content="Tag: 资讯 | OurHome">
+	<meta property="og:title" content="profile | OurHome">
 	<meta property="og:description" content="王力宏歌迷会,OurHome,OurHome上海,OurHome帐号申请,OurHome上海,王力宏">
-	<meta property="og:url" content="https://ourhome-china.cn/tags/%E8%B5%84%E8%AE%AF/index.html">
+	<meta property="og:url" content="https://ourhome-china.cn/profile/index.html">
 
-	
+<link rel="stylesheet" href="/css/allinonecss.min.css">
+<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script src="//captcha.luosimao.com/static/dist/api.js"></script>
 
 	
 	
 	
 <link rel="stylesheet" href="/css/allinonecss.min.css">
+<script>
+  function profile(){
+    var key=$("#key").val()
+    $.ajax({
+            //请求方式
+            type : "GET",
+            //请求的媒体类型
+            contentType: "application/json;charset=UTF-8",
+            //请求地址
+            url : "http://api.ourhome-china.cn:8000/v1/user/profile?key="+key,
+            //url : "http://127.0.0.1:8000/v1/user",
+            //数据，json字符串
+            data : JSON.stringify({
+              'luosimao': $( "input[name='luotest_response']").val()
+            }),
+            //请求成功
+            success : function(result) {
+                var gender = result.gender===0?"女":"男";
+                html = '<fieldset disabled> <div class="form-group"> <label for="disabledTextInput">会员 ID</label> <input type="text" id="disabledTextInput" class="form-control" placeholder="'+result.id+'"> <div class="form-group"> <label for="disabledTextInput">姓名</label> <input type="text" id="disabledTextInput" class="form-control" placeholder="'+result.name+'"> <div class="form-group"> <label for="disabledTextInput">电话</label> <input type="text" id="disabledTextInput" class="form-control" placeholder="'+result.phone+'"> </div> <div class="form-group"> <label for="disabledSelect">性别</label> <select id="disabledSelect" class="form-control"> <option>'+gender+'</option> </select> </div> <div class="form-group"> <label for="disabledTextInput">邮箱</label> <input type="text" id="disabledTextInput" class="form-control" placeholder="'+result.email+'"> <div class="form-group"> <label for="disabledTextInput">年龄</label> <input type="text" id="disabledTextInput" class="form-control" placeholder="'+result.age+'"> <div class="form-group"> <label for="disabledTextInput">兴趣爱好</label> <input type="text" id="disabledTextInput" class="form-control" placeholder="'+result.happy+'"> <label for="disabledTextInput">身份证号码后四位</label> <input type="text" id="disabledTextInput" class="form-control" placeholder="'+result.id_card+'"></fieldset>'
 
+                $("#key-input").after(html);
+                $("#profile-button").attr("disabled","disabled");
+
+            },
+            //请求失败，包含具体的错误信息
+            error : function(e){
+                LUOCAPTCHA.reset()
+                if(e.status == 500){
+                  if (e.responseJSON.detail){
+                    alert(e.responseJSON.detail);
+                  }
+                }
+                console.log(e.responseText);
+            }
+        });
+  }
+</script>
 
 	
 	
@@ -58,7 +100,7 @@
 
 <body class="tag-template">
 	<div class="site-wrapper">
-		 
+		
 
 
 
@@ -87,7 +129,7 @@
             </li>
             
             <li>
-                <a href="/profile" title="查询">查询</a>
+                <a href="/search" title="查询">查询</a>
             </li>
             
             <li>
@@ -130,9 +172,9 @@
         <div class="site-header-content">
             
             <h1 class="site-title">
-                Tag: 资讯
+                信息查询
             </h1>
-            <h2 class="site-description">标签</h2>
+            <h2 class="site-description"></h2>
         </div>
         
         
@@ -140,81 +182,99 @@
 </header>
 
 
+
 <div id="site-main" class="site-main outer" role="main">
 	<div class="inner">
 		<div class="post-feed">
-			
-			<article class="post-card post ">
-				
-				<a class="post-card-image-link" title="湖南卫视跨年 — 全能歌手+暖心偶像" href="/2020/12/19/%E6%B9%96%E5%8D%97%E5%8D%AB%E8%A7%86%E8%B7%A8%E5%B9%B4/">
-					<div class="post-card-image b-lazy" data-src="https://r.photo.store.qq.com/psc?/V12EvAd609VbnF/ruAMsa53pVQWN7FLK88i5sLBZfSPf69byBQ2ZAQyENu9rCjzkPcVjESXAviEv992wGphuGtuxpkBYUdb2BgeUkxOdUJ6OBQzqv16qZS3UDE!/mnull&bo=0AIABdACAAUBCS4!&rf=photolist&t=5/r/_yake_qzoneimgout.png"></div>
-				</a>
-				
-				<div class="post-card-content">
-					<a class="post-card-content-link" title="湖南卫视跨年 — 全能歌手+暖心偶像" href="/2020/12/19/%E6%B9%96%E5%8D%97%E5%8D%AB%E8%A7%86%E8%B7%A8%E5%B9%B4/">
-						<header class="post-card-header">
-							<span class="post-card-tags">
-								
-								
-								资讯
-								| 
-								
-								<time datetime="2020-12-19T10:35:06.474Z">
-									2020-12-19
-								</time>
-							</span>
-							<h2 class="post-card-title">湖南卫视跨年 — 全能歌手+暖心偶像</h2>
-						</header>
-						<div class="post-card-excerpt">
-							<p>
-								
-								
-								
-								
-								
-								
-								
-								
+			<article class="post-card post no-image custom-page">
+				<article class="post-full no-image">
+					<section class="post-full-content page-full-content">
+						<div id="photoswipe" class="markdown-body">
+							    <div class="form-group" id="key-input">
+                                  <label for="">手机号/邮箱</label>
+                                  <input type="text" value="" class="form-control" id="key" placeholder="手机号/邮箱">
+                                </div>
+                
+                               <!--  
+                                <div class="form-group l-captcha" data-width="100%" data-site-key="1932ac7581381c4e1a0d80d62e75ab26"></div> -->
 
-#湖南卫视跨年阵容官宣# 
-笃静守一，他是全能歌手 
-真诚炽热，他是暖心偶像 
-欢迎@王力宏 加盟#湖南卫视跨年#   
-12月31日19: 30全球直播！
-								...
-							</p>
+                                <button id="profile-button" onclick="profile()" type="submit" class="btn btn-primary center-block btn-lg" style="margin-top: 10%"> 信息查询 </button>
 						</div>
-					</a>
-					<footer class="post-card-meta">
-						<div class="author-list">
-							<div class="author-list-item">
-								<div class="author-name-tooltip">OHC</div>
-								
-								<a href="/about" class="static-avatar">
-									<img class="author-profile-image" src="https://r.photo.store.qq.com/psc?/V12EvAd609VbnF/ruAMsa53pVQWN7FLK88i5sLBZfSPf69byBQ2ZAQyENsJYdjLsfcAtGZpPhZu1YkLckpCYe6uhGsfgol69pdnJ0*ItGa.qhBXZFtgdAPFNwo!/mnull&bo=NwQ4BDcEOAQBCS4!&rf=photolist&t=5/r/_yake_qzoneimgout.png" alt="OHC">
-								</a>
-								
-							</div>
-						</div>
-						<span class="reading-time">
-							0
-							min read
-						</span>
-					</footer>
-				</div>
+					</section>
+				</article>
 			</article>
-			
 		</div>
 	</div>
 </div>
 
 
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
 
-<div class="outer">
-	<nav class="pagination">
-		
-	</nav>
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo https://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
 </div>
+
 
 
 
@@ -244,26 +304,8 @@
       
       
       <li>
-        <a href="/2020/12/19/2021%20%E7%A6%8F%E5%88%A9%E7%A7%80%E6%8A%A5%E5%90%8D%E5%95%A6/">2021 福利秀报名</a>
+        <a href="/2020/12/05/%E5%85%B3%E4%BA%8E%E7%BD%91%E7%AB%99%E6%9B%B4%E6%96%B0/">关于网站更新</a>
       </li>
-      
-      
-      
-      <li>
-        <a href="/2020/12/19/%E5%87%BA%E9%81%93%E5%9B%9B%E5%88%86%E4%B9%8B%E4%B8%80%E4%B8%96%E7%BA%AA/">出道四分之一世纪</a>
-      </li>
-      
-      
-      
-      <li>
-        <a href="/2020/12/19/OH%E4%B8%8A%E6%B5%B7%E5%88%86%E4%BC%9A%E6%8A%95%E5%B1%8F%E5%BA%94%E6%8F%B4%E5%85%AC%E5%91%8A/">OH 上海投屏应援</a>
-      </li>
-      
-      
-      
-      
-      
-      
       
       
     </ul>
@@ -282,7 +324,7 @@
         <h3 class="read-next-card-header-title">分类</h3>
     </header>
     <div class="read-next-card-content">
-        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BA%94%E6%8F%B4/">应援</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A6%8F%E5%88%A9%E7%A7%80/">福利秀</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%B5%84%E8%AE%AF/">资讯</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%80%9A%E7%9F%A5/">通知</a></li></ul>
+        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%80%9A%E7%9F%A5/">通知</a></li></ul>
     </div>
 </article>
 
@@ -296,7 +338,7 @@
 		<h3 class="read-next-card-header-title">标签云</h3>
 	</header>
 	<div class="read-next-card-content-ext">
-		<a href="/tags/%E5%BA%94%E6%8F%B4/" style="font-size: 24px;">应援</a> <a href="/tags/%E7%A6%8F%E5%88%A9%E7%A7%80/" style="font-size: 14px;">福利秀</a> <a href="/tags/%E8%B5%84%E8%AE%AF/" style="font-size: 14px;">资讯</a> <a href="/tags/%E9%80%9A%E7%9F%A5/" style="font-size: 24px;">通知</a>
+		<a href="/tags/%E9%80%9A%E7%9F%A5/" style="font-size: 14px;">通知</a>
 	</div>
 </article>
 
@@ -372,6 +414,19 @@
     })
 </script>
 
+
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+
+
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+
+
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
 
 
 
