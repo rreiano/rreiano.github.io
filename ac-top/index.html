@@ -55,8 +55,11 @@ $(function(){
             //请求成功
             success : function(result) {
                 for (var i=1;i<=result.length;i++){
+                    var colors = ["active", "success", "warning", "danger", "info"];
+                    var randomColor = colors[Math.floor(Math.random() * colors.length)];
+
                     $("#activity_top_table tbody").append(
-                        '<tr><td class="text-center">'+i+'</td><td class="text-center">'+result[i-1][0]+'</td><td class="text-center">'+result[i-1][1]+'</td></tr>'
+                        '<tr class="'+randomColor+'"><td class="text-center">'+i+'</td><td class="text-center">'+result[i-1][0]+'</td><td class="text-center">'+result[i-1][1]+'</td></tr>'
                     );    
                 }
                  
@@ -102,9 +105,9 @@ $(function(){
                 <a href="/register" title="注册">注册</a>
             </li>
             
-            <!-- <li>
-                <a href="/search" title="查询">查询</a>
-            </li> -->
+            <li>
+                <a href="/profile" title="查询">查询</a>
+            </li>
             
             <li>
                 <a href="/ac-top" title="榜单">榜单</a>
@@ -168,7 +171,7 @@ $(function(){
                                 <thead>
                                     <tr>
                                         <th class="text-center">排名</th>
-                                        <th class="text-center">OH-ID</th>
+                                        <th class="text-center">会员 ID</th>
                                         <th class="text-center">参与活动次数</th>
                                     </tr>
                                 </thead>
@@ -176,6 +179,12 @@ $(function(){
                                    
                                 </tbody>
                             </table>
+                              <h3 id="其他"><a href="#其他"  class="headerlink" title="其他"></a>查询须知：</h3>
+                              <p>
+                                  1. 排名是根据参与活动次数进行排序的，可能有很多宏亲会处于并列的情况<br>
+                                  2. 对于已参加活动但未录入的数据, 需要等待录入后才能查询得到。<br>
+                                  3. 如需帮助，或有其他反馈建议，请发送邮件到 <a href="mailto:support@ourhome-china.cn"> support@ourhome-china.cn </a>或 <a href="mailto:shanghai@vip.leehome-cn.com"> shanghai@vip.leehome-cn.com </a> 与我们取得联系。 
+                              </p>
                             </div>
                         </div>
                     </section>
